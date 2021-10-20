@@ -11,6 +11,9 @@ RUN npm run build
 #FROM knows that previous phase is terminated
 FROM nginx
 
+#Elasticbeanstalk looks for exposed port to use that as port mapping for incoming traffic
+EXPOSE 80
+
 #says copy something over from other phase
 COPY --from=builder /app/build /usr/share/nginx/html
 
