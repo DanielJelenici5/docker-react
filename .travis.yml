@@ -1,0 +1,11 @@
+sudo: required
+language: generic
+#Tells travis CI to install a copy of docker 
+services: 
+  - docker
+
+before_install:
+  - docker build -t djelenici/docker-react -f Dockerfile.dev . 
+
+script:
+  - docker run -e CI=true djelenici/docker-react npm run test
